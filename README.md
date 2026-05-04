@@ -35,6 +35,32 @@ These are the network interfaces for our VPN. The goal is to ensure that if the 
 
 ---
 
+## Step 0: Installation
+
+### 1. Install DNSCrypt-Proxy
+
+Run the install script to download and set up DNSCrypt-Proxy:
+
+```bash
+./linux/install.sh
+```
+
+This will:
+- Download DNSCrypt-Proxy from the official releases
+- Install it to `~/applications/dnscrypt-proxy`
+- Copy the `dnscrypt-proxy.toml` configuration
+- Register it as a systemd service
+
+### 2. Start DNSCrypt-Proxy
+
+```bash
+~/applications/dnscrypt-proxy/dnscrypt-proxy --config dnscrypt-proxy.toml --service install
+sudo systemctl enable dnscrypt-proxy
+sudo systemctl start dnscrypt-proxy
+```
+
+---
+
 ## Step 1: Configuring DNSCrypt-Proxy
 
 First, we need to configure our DNS provider. In the `dnscrypt-proxy.toml` file, we pin our traffic to Cloudflare for speed and reliability.
